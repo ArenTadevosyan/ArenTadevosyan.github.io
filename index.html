@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата и Регистрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .cloud-img {
+            width: 100px;
+            height: auto;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Оплата и Регистрация</h1>
+
+    <!-- Кнопка оплаты -->
+    <form action="/process_payment" method="post">
+        <input type="hidden" name="product_id" value="123"> <!-- Примерный ID продукта -->
+        <input type="submit" value="Оплатить">
+    </form>
+
+    <!-- Ссылка на страницу регистрации -->
+    <p>Еще не зарегистрированы? <a href="/registration">Зарегистрируйтесь здесь</a>.</p>
+
+    <!-- Изображение -->
+    <img src="cloud-svgrepo-com.svg" alt="Cloud Image" class="cloud-img">
+</body>
+</html>
