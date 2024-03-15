@@ -22,8 +22,27 @@
             text-align: center;
         }
 
+        .container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
         form {
             text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         input[type="submit"] {
@@ -56,26 +75,42 @@
             color: #0056b3;
         }
 
-        .cloud-img {
-            width: 100px;
-            height: auto;
-            margin-top: 50px;
-        }
     </style>
 </head>
 <body>
     <h1>Оплата и Регистрация</h1>
 
+    <div id="main" class="container">
+        <h2>Регистрация</h2>
+        <form action="/register" method="post">
+            <input type="text" name="username" placeholder="Имя пользователя" required id="user_name"><br>
+            <input type="email" name="email" placeholder="Email" required id="user_email"><br>
+            <input type="password" name="password" placeholder="Пароль" required id="user_pass"><br>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+
     <!-- Кнопка оплаты -->
-    <form action="/process_payment" method="post">
-        <input type="hidden" name="product_id" value="123"> <!-- Примерный ID продукта -->
-        <input type="submit" value="Оплатить">
+    <form id="form" action="/process_payment" method="post">
+        <input type="hidden" name="buy" value="123"> <!-- Примерный ID продукта -->
+        <input type="submit" id="buy" value="Оплатить">
     </form>
 
     <!-- Ссылка на страницу регистрации -->
-    <p>Еще не зарегистрированы? <a href="/registration">Зарегистрируйтесь здесь</a>.</p>
+    <p>Уже зарегистрированы? <a href="/login">Войдите здесь</a>.</p>
 
     <!-- Изображение -->
-    <img src="cloud-svgrepo-com.svg" alt="Cloud Image" class="cloud-img">
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let buy = document.getElementById("buy")
+
+        buy.addEventListener("click", () =>{
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+            document.getElementById("user_name").value = tg.initDataUnSafe.user.first_name + "" + tg.initDataUnSafe.user.last_name;
+        });
+    </script>
 </body>
 </html>
